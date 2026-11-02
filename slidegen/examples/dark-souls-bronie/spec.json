@@ -1,0 +1,291 @@
+{
+ "series": "Dark Souls · najlepsze bronie PvE",
+ "vars": {
+  "--icon-crop": "0%",
+  "--icon-pad": "7%",
+  "--icon-fit": "contain",
+  "--tile-bg": "radial-gradient(circle at 50% 42%,#2e2a25 0%,#141210 70%,#0a0908 100%)",
+  "--tile-border": "#4d463c",
+  "--bgart-op": ".17",
+  "--bgart-blur": "0px",
+  "--bgart-bright": "1",
+  "--bgart-sat": ".5",
+  "--title-font": "'Marcellus SC'",
+  "--title-weight": "400",
+  "--label-font": "400 30px 'Marcellus SC'",
+  "--muted": "#5e4a30",
+  "--fcap-color": "#8c2a17"
+ },
+ "audio": "voice.wav",
+ "words": "words.json",
+ "marks": "marks.json",
+ "output": "ds_bronie.mp4",
+ "slides": [
+  {
+   "mark": "1",
+   "section": "1/4 Wstęp",
+   "kicker": "Dark Souls · PvE",
+   "title": "Najlepsze bronie",
+   "layout": "icons",
+   "items": [
+    {
+     "icon": "icons/Zweihander.png",
+     "tone": "fire",
+     "label": "Zweihander",
+     "caption": "siła"
+    },
+    {
+     "icon": "icons/Black Knight Halberd.png",
+     "tone": "danger",
+     "label": "BK Halberd",
+     "caption": "quality / siła"
+    },
+    {
+     "icon": "icons/Claymore.png",
+     "tone": "holy",
+     "label": "Claymore",
+     "caption": "quality"
+    }
+   ],
+   "note": {
+    "at": "według stylu",
+    "text": "podział według stylu gry"
+   }
+  },
+  {
+   "mark": "2",
+   "section": "2/4 Siła",
+   "kicker": "Build na siłę",
+   "title": "Zweihander",
+   "layout": "feature",
+   "feature": {
+    "icon": "icons/Zweihander.png",
+    "tone": "fire",
+    "label": "Zweihander",
+    "caption": "siła"
+   },
+   "items": [
+    {
+     "at": "cmentarzu",
+     "icon": "icons/Estus Flask.png",
+     "tone": "holy",
+     "label": "Cmentarz przy Firelink Shrine",
+     "caption": "dostępny od pierwszych minut"
+    },
+    {
+     "at": "ogromne",
+     "tone": "fire",
+     "label": "Ogromne obrażenia",
+     "caption": "potężny silny atak",
+     "badge": "R2"
+    },
+    {
+     "at": "wbija",
+     "tone": "danger",
+     "label": "Wbija wrogów w ziemię",
+     "caption": "większość przeciwników"
+    }
+   ]
+  },
+  {
+   "mark": "3",
+   "section": "3/4 Quality / Siła",
+   "kicker": "Ulubieniec speedrunnerów",
+   "title": "Black Knight Halberd",
+   "layout": "feature",
+   "feature": {
+    "icon": "icons/Black Knight Halberd.png",
+    "tone": "danger",
+    "label": "BK Halberd",
+    "caption": "quality / siła"
+   },
+   "items": [
+    {
+     "at": "speedrunnerów",
+     "tone": "fire",
+     "label": "Absurdalne obrażenia bazowe",
+     "caption": "faworyt speedrunnerów",
+     "badge": "top"
+    },
+    {
+     "at": "czarnego rycerza",
+     "icon": "icons/Black Knight Helm.png",
+     "tone": "shadow",
+     "label": "Drop z Czarnego Rycerza",
+     "caption": "rzadki drop · trzeba mieć szczęście"
+    },
+    {
+     "at": "ulepszysz",
+     "icon": "icons/Large Titanite Shard.png",
+     "tone": "holy",
+     "label": "Ulepsz do +5",
+     "caption": "bossowie przestają być wyzwaniem"
+    }
+   ],
+   "figure": {
+    "src": "art/black-knight-figure.jpg",
+    "label": "Czarny Rycerz",
+    "caption": "Darkroot Basin",
+    "at": "czarnego rycerza"
+   }
+  },
+  {
+   "mark": "4",
+   "section": "4/4 Quality",
+   "kicker": "Najbardziej uniwersalna",
+   "title": "Claymore",
+   "layout": "feature",
+   "feature": {
+    "icon": "icons/Claymore.png",
+    "tone": "holy",
+    "label": "Claymore",
+    "caption": "quality"
+   },
+   "items": [
+    {
+     "at": "uniwersalna",
+     "tone": "holy",
+     "label": "Siła + zręczność",
+     "caption": "idealna pod równy rozwój"
+    },
+    {
+     "at": "moście",
+     "tone": "fire",
+     "label": "Most z Hellkite Wyvernem",
+     "caption": "strzeżony przez ognistego smoka"
+    },
+    {
+     "at": "zestawem",
+     "tone": "frost",
+     "label": "Fenomenalny moveset",
+     "caption": "szerokie cięcia + precyzyjne pchnięcia"
+    }
+   ]
+  }
+ ],
+ "boardThemes": [
+  {
+   "name": "Ognisko",
+   "base": "grimoire",
+   "bgImage": "art/44.jpg",
+   "vars": {
+    "--bgart-op": ".6",
+    "--bgart-blur": "2px",
+    "--bgart-bright": ".55",
+    "--bgart-pos": "40% 60%",
+    "--accent": "#f0a04b"
+   }
+  },
+  {
+   "name": "Mapa Lordranu",
+   "base": "parchment",
+   "bgImage": "art/Mapa_Lordran.webp",
+   "fonts": [
+    "marcellus-sc/400.css"
+   ],
+   "vars": {
+    "--bgart-op": ".17",
+    "--bgart-blur": "0px",
+    "--bgart-bright": "1",
+    "--bgart-sat": ".5",
+    "--title-font": "'Marcellus SC'",
+    "--title-weight": "400",
+    "--label-font": "400 30px 'Marcellus SC'",
+    "--muted": "#5e4a30",
+    "--fcap-color": "#8c2a17"
+   }
+  },
+  {
+   "name": "Kiln · Gwyn",
+   "base": "esports",
+   "bgImage": "art/gwyn.jpg",
+   "vars": {
+    "--bgart-op": ".5",
+    "--bgart-blur": "3px",
+    "--bgart-bright": ".5",
+    "--accent": "#ff7a1a",
+    "--rule": "#ff7a1a",
+    "--title-font": "Cinzel",
+    "--title-size": "92px",
+    "--title-fill": "linear-gradient(180deg,#fff1d6 0%,#ffbf73 60%,#e0702a 100%)",
+    "--label-font": "700 30px Cinzel",
+    "--card-name-font": "600 32px Inter",
+    "--card-bg": "rgba(16,12,10,.82)"
+   }
+  },
+  {
+   "name": "Darkroot",
+   "base": "arcane",
+   "bgImage": "art/artorias.jpg",
+   "fonts": [
+    "marcellus-sc/400.css"
+   ],
+   "vars": {
+    "--bg": "radial-gradient(ellipse 70% 60% at 50% 30%,#1f3326 0%,#0f1a13 60%,#060a07 100%)",
+    "--bgart-op": ".5",
+    "--bgart-blur": "3px",
+    "--bgart-bright": ".55",
+    "--accent": "#a8d88f",
+    "--rule": "#a8d88f",
+    "--text": "#eef3e4",
+    "--muted": "#9fb093",
+    "--line": "rgba(168,216,143,.28)",
+    "--title-font": "'Marcellus SC'",
+    "--title-weight": "400",
+    "--title-track": ".04em",
+    "--title-fill": "linear-gradient(180deg,#f4f8e6 0%,#c9dfa3 60%,#8fb06a 100%)",
+    "--title-shadow": "drop-shadow(0 0 18px rgba(120,180,90,.35))",
+    "--label-font": "400 32px 'Marcellus SC'",
+    "--card-bg": "rgba(14,24,17,.78)",
+    "--card-line": "rgba(168,216,143,.3)",
+    "--deco-color": "#a8d88f"
+   }
+  },
+  {
+   "name": "Praise the Sun",
+   "base": "codex",
+   "bgImage": null,
+   "vars": {
+    "--accent": "#b8740f",
+    "--rule": "#b8740f",
+    "--bg": "radial-gradient(ellipse 85% 80% at 50% 0%,#fff6dc 0%,#f3ead6 55%,#e4d8bf 100%)",
+    "--fcap-color": "#9a5a0a"
+   }
+  },
+  {
+   "name": "Inwentarz",
+   "base": "frostforge",
+   "bgImage": "art/background.png",
+   "fonts": [
+    "marcellus-sc/400.css"
+   ],
+   "vars": {
+    "--bg": "radial-gradient(ellipse 80% 70% at 50% 40%,#1d1b18 0%,#0c0b0a 70%,#050505 100%)",
+    "--bgart-op": ".35",
+    "--bgart-blur": "0px",
+    "--bgart-bright": ".6",
+    "--bgart-size": "cover",
+    "--text": "#ddd4c0",
+    "--muted": "#8f8776",
+    "--accent": "#c8b48a",
+    "--rule": "#6d6352",
+    "--line": "rgba(200,180,138,.22)",
+    "--title-font": "'Marcellus SC'",
+    "--title-weight": "400",
+    "--title-fill": "linear-gradient(180deg,#f2ead6,#c4b597)",
+    "--title-shadow": "none",
+    "--label-font": "400 30px 'Marcellus SC'",
+    "--card-bg": "rgba(18,16,14,.86)",
+    "--card-line": "rgba(200,180,138,.22)",
+    "--card-radius": "0px",
+    "--tile-radius": "0px",
+    "--deco-op": "0"
+   }
+  }
+ ],
+ "theme": "parchment",
+ "bgImage": "art/Mapa_Lordran.webp",
+ "fonts": [
+  "marcellus-sc/400.css"
+ ]
+}

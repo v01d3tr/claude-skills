@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="FONTS/cinzel/400.css">
+<link rel="stylesheet" href="FONTS/cinzel/700.css">
+<link rel="stylesheet" href="FONTS/inter/400.css">
+<link rel="stylesheet" href="FONTS/inter/500.css">
+<link rel="stylesheet" href="FONTS/inter/600.css">
+<link rel="stylesheet" href="FONTS/inter/700.css">
+<link rel="stylesheet" href="FONTS/oswald/500.css">
+<link rel="stylesheet" href="FONTS/oswald/700.css">
+<link rel="stylesheet" href="FONTS/rajdhani/600.css">
+<link rel="stylesheet" href="FONTS/rajdhani/700.css">
+<link rel="stylesheet" href="FONTS/cormorant-garamond/400-italic.css">
+<link rel="stylesheet" href="FONTS/cormorant-garamond/700.css">
+<!--EXTRA_FONTS-->
+<style>
+/* ---------- theme variables (default = grimoire); on body so var() references resolve per theme ---------- */
+body{
+  --bg:radial-gradient(ellipse 75% 70% at 55% 42%,#2c2219 0%,#1b1511 55%,#0e0b09 100%);
+  --text:#f1e8d4; --muted:#a39274; --line:rgba(230,199,127,.22); --accent:#e6c77f; --rule:#b8924a;
+  --arcane:#b48cff; --fire:#ff9046; --frost:#62cbff; --nature:#79dc7a; --holy:#ffd86b; --shadow:#c27bff; --danger:#ff5d4d; --neutral:#e6c77f;
+  --ui-font:Inter; --title-font:Cinzel; --title-weight:700; --title-size:84px; --title-case:uppercase; --title-track:.02em;
+  --title-fill:linear-gradient(180deg,#fbe9bd 0%,#e6c77f 55%,#b08a44 100%); --title-shadow:drop-shadow(0 4px 14px rgba(0,0,0,.55));
+  --label-font:700 30px Cinzel; --label-case:uppercase; --label-color:var(--text);
+  --note-font:400 26px Cinzel; --note-track:.38em; --note-case:uppercase;
+  --card-bg:rgba(12,9,8,.78); --card-line:var(--line); --card-text:var(--text); --card-radius:8px; --card-shadow:0 12px 30px rgba(0,0,0,.35); --card-name-font:600 32px Inter;
+  --tile-border:#5f4b2c; --tile-bw:3px; --tile-radius:10px;
+  --deco-op:.07; --deco-color:var(--accent); --grain-op:.18; --grain-blend:overlay;
+  --mark-bg:#fff4d6;
+}
+body[data-theme=parchment]{
+  --bg:radial-gradient(ellipse 80% 75% at 50% 40%,#f1e3c0 0%,#dcc595 58%,#b4945f 100%);
+  --text:#3a2914; --muted:#7a6243; --line:rgba(70,45,15,.25); --accent:#8c2a17; --rule:#8a6a3a;
+  --title-fill:linear-gradient(180deg,#6a2414 0%,#3d150b 100%); --title-shadow:drop-shadow(0 2px 0 rgba(255,244,214,.6));
+  --card-bg:rgba(18,22,38,.93); --card-line:rgba(0,0,0,.35); --card-text:#f1e8d4; --card-shadow:0 10px 24px rgba(60,35,10,.35);
+  --tile-border:#4a3a22; --deco-op:.10; --deco-color:#6b4a22; --grain-op:.35; --grain-blend:multiply; --mark-bg:#fff;
+}
+body[data-theme=arcane]{
+  --bg:radial-gradient(ellipse 60% 55% at 22% 18%,#3a2780 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 85% 90%,#0f4f6e 0%,transparent 70%),linear-gradient(160deg,#130d33 0%,#0a0820 60%,#05040f 100%);
+  --text:#ece8ff; --muted:#9d97c9; --line:rgba(150,130,255,.32); --accent:#7fe0ff; --rule:#7fe0ff;
+  --title-font:Rajdhani; --title-size:96px; --title-track:.06em;
+  --title-fill:linear-gradient(90deg,#9be7ff 0%,#d2b4ff 100%); --title-shadow:drop-shadow(0 0 18px rgba(140,120,255,.55));
+  --label-font:700 32px Rajdhani; --note-font:600 28px Rajdhani; --note-track:.5em;
+  --card-bg:rgba(24,18,62,.72); --card-line:rgba(150,130,255,.35); --card-radius:14px; --card-shadow:0 0 0 1px rgba(127,224,255,.06),0 0 30px rgba(110,80,255,.18);
+  --tile-border:rgba(170,150,255,.65); --tile-bw:2px; --tile-radius:14px;
+  --deco-op:.12; --deco-color:#7fe0ff; --grain-op:.10;
+}
+body[data-theme=esports]{
+  --bg:repeating-linear-gradient(-55deg,rgba(255,255,255,.018) 0 2px,transparent 2px 22px),linear-gradient(135deg,#171a20 0%,#1d2129 55%,#0f1115 100%);
+  --text:#f3f5f8; --muted:#8b93a3; --line:rgba(255,255,255,.08); --accent:#ff4655; --rule:#ff4655;
+  --title-font:Oswald; --title-size:104px; --title-track:.01em; --title-fill:linear-gradient(180deg,#ffffff,#d6dbe4); --title-shadow:none;
+  --label-font:700 30px Oswald; --note-font:500 28px Oswald; --note-track:.2em;
+  --card-bg:#20242c; --card-line:#2b303a; --card-radius:2px; --card-shadow:none; --card-name-font:700 34px Oswald;
+  --tile-border:#2f3440; --tile-bw:2px; --tile-radius:3px; --deco-op:0; --grain-op:.06;
+}
+body[data-theme=codex]{
+  --bg:radial-gradient(ellipse 90% 80% at 40% 30%,#faf8f3 0%,#f1ede4 70%,#e6e0d3 100%);
+  --text:#1d1b18; --muted:#6f685c; --line:rgba(0,0,0,.13); --accent:#9b2c1f; --rule:#1d1b18;
+  --arcane:#6b3fd0; --fire:#c2410c; --frost:#0e7490; --nature:#2f7d32; --holy:#a16207; --shadow:#7e22ce; --danger:#b91c1c; --neutral:#57534e;
+  --title-font:'Cormorant Garamond'; --title-size:112px; --title-case:none; --title-track:-.01em; --title-fill:linear-gradient(#1d1b18,#1d1b18); --title-shadow:none;
+  --label-font:600 22px Inter; --label-case:uppercase; --note-font:italic 400 38px 'Cormorant Garamond'; --note-track:0; --note-case:none;
+  --card-bg:#ffffff; --card-line:rgba(0,0,0,.12); --card-text:#1d1b18; --card-radius:4px; --card-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.05);
+  --tile-border:rgba(0,0,0,.25); --tile-bw:1px; --tile-radius:6px; --deco-op:0; --grain-op:.25; --grain-blend:multiply; --mark-bg:#fff;
+}
+body[data-theme=frostforge]{
+  --bg:radial-gradient(ellipse 70% 60% at 50% 28%,#30435a 0%,#1a2533 55%,#0a0f16 100%);
+  --text:#e9f1f9; --muted:#8ea3b9; --line:rgba(170,210,250,.22); --accent:#9fd4ff; --rule:#9fd4ff;
+  --title-fill:linear-gradient(180deg,#ffffff 0%,#d4ebff 55%,#8db6dd 100%); --title-shadow:drop-shadow(0 0 22px rgba(120,190,255,.35));
+  --card-bg:rgba(210,232,255,.07); --card-line:rgba(180,215,255,.24); --card-radius:10px; --card-shadow:0 10px 30px rgba(0,0,0,.35);
+  --tile-border:#405873; --deco-op:.09; --deco-color:#cfe8ff; --grain-op:.12;
+}
+/* left-aligned editorial themes */
+body[data-theme=esports] .head, body[data-theme=codex] .head{left:120px;right:120px;text-align:left}
+body[data-theme=esports] .body, body[data-theme=codex] .body{justify-content:flex-start;padding-left:120px}
+body[data-theme=esports] .divider, body[data-theme=codex] .divider{margin-left:0}
+body[data-theme=esports] .divider{width:150px;height:8px}
+body[data-theme=esports] .divider i{height:8px;top:0}
+body[data-theme=esports] .divider s{display:none}
+body[data-theme=esports] .kicker{display:inline-block;background:var(--accent);color:#fff;padding:6px 14px;letter-spacing:.24em;margin-bottom:18px}
+body[data-theme=esports] .card .name, body[data-theme=esports] .icon-item .label{text-transform:uppercase}
+body[data-theme=codex] .divider{width:260px}
+body[data-theme=codex] .kicker{letter-spacing:.3em}
+body[data-theme=esports] .note, body[data-theme=codex] .note{text-align:left;left:120px}
+body[data-theme=esports] .meter-wrap, body[data-theme=codex] .meter-wrap{align-items:flex-start}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+body{font-family:var(--ui-font),sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg)}
+#deco{position:absolute;right:-260px;top:120px;width:980px;height:980px;opacity:var(--deco-op);color:var(--deco-color)}
+#bgart{position:absolute;inset:-40px;background-repeat:no-repeat;background-size:var(--bgart-size,cover);background-position:var(--bgart-pos,center);
+  filter:blur(var(--bgart-blur,6px)) brightness(var(--bgart-bright,.55)) saturate(var(--bgart-sat,1));opacity:var(--bgart-op,.4)}
+#grain{position:absolute;inset:0;opacity:var(--grain-op);mix-blend-mode:var(--grain-blend);pointer-events:none}
+#badge{position:absolute;right:40px;top:36px;z-index:9;font:700 30px Inter;color:#fff;background:#e0245e;padding:10px 20px;border-radius:8px;letter-spacing:.04em;display:none}
+.series{position:absolute;left:96px;top:58px;font:600 18px var(--ui-font);letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.series:after{content:"";display:block;width:100%;height:1px;margin-top:12px;background:linear-gradient(90deg,var(--rule),transparent)}
+.slide{position:absolute;inset:0}
+.section{position:absolute;left:96px;bottom:52px;display:flex;align-items:center;gap:14px;font:600 17px var(--ui-font);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.section b{font-weight:700;color:var(--accent);border:1px solid var(--line);padding:5px 10px;letter-spacing:.12em}
+.head{position:absolute;left:0;right:0;top:112px;text-align:center}
+.kicker{font:600 20px var(--ui-font);letter-spacing:.42em;text-transform:uppercase;color:var(--tone);margin-bottom:14px}
+.title{font-family:var(--title-font);font-weight:var(--title-weight);font-size:var(--title-size);line-height:1.04;white-space:nowrap;display:inline-block;
+  letter-spacing:var(--title-track);text-transform:var(--title-case);
+  background:var(--title-fill);-webkit-background-clip:text;background-clip:text;color:transparent;filter:var(--title-shadow)}
+.divider{position:relative;width:420px;height:14px;margin:20px auto 0}
+.divider i{position:absolute;top:6px;height:1px;width:50%;background:var(--rule)}
+.divider i:first-child{right:50%;transform-origin:right}
+.divider i:last-child{left:50%;transform-origin:left}
+.divider s{position:absolute;left:50%;top:1px;width:11px;height:11px;margin-left:-5.5px;transform:rotate(45deg);background:var(--tone)}
+body[data-theme=esports] .divider i:first-child,body[data-theme=codex] .divider i:first-child{right:auto;left:0;transform-origin:left}
+body[data-theme=codex] .divider s{left:0;margin-left:0}
+.subtitle{margin-top:22px;font:500 26px var(--ui-font);color:var(--muted);letter-spacing:.04em}
+.body{position:absolute;left:0;right:0;top:330px;bottom:170px;display:flex;align-items:center;justify-content:center}
+.L-hero .head{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+.L-hero .title{font-size:calc(var(--title-size) * 1.4)}
+.note{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:var(--note-font);letter-spacing:var(--note-track);text-transform:var(--note-case);color:var(--tone)}
+
+/* icon tile */
+.tile{position:relative;width:var(--s,128px);height:var(--s,128px);border-radius:var(--tile-radius);flex:none;
+  background:var(--tile-bg,radial-gradient(circle at 50% 38%,color-mix(in srgb,var(--tone) 65%,#fff 10%) 0%,color-mix(in srgb,var(--tone) 45%,#000) 55%,color-mix(in srgb,var(--tone) 18%,#000) 100%));
+  border:var(--tile-bw) solid var(--tile-border);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),inset 0 -18px 30px rgba(0,0,0,.45),0 10px 24px rgba(0,0,0,.35)}
+.tile svg{position:absolute;inset:16%;width:68%;height:68%;color:#fff8ea;filter:drop-shadow(0 0 10px var(--tone)) drop-shadow(0 2px 2px rgba(0,0,0,.6))}
+.tile.img{overflow:hidden;background:var(--tile-bg,#000)}
+/* --icon-crop: WoW icons carry a dark border, crop it like the game does (8%); transparent icons (Dark Souls items) want 0% + --icon-pad */
+.tile img{position:absolute;left:calc(var(--icon-crop,8%) * -1 + var(--icon-pad,0%));top:calc(var(--icon-crop,8%) * -1 + var(--icon-pad,0%));
+  width:calc(100% + 2 * var(--icon-crop,8%) - 2 * var(--icon-pad,0%));height:calc(100% + 2 * var(--icon-crop,8%) - 2 * var(--icon-pad,0%));object-fit:var(--icon-fit,cover)}
+.tile .glow{position:absolute;inset:-3px;border-radius:calc(var(--tile-radius) + 2px);box-shadow:0 0 0 0 var(--tone);opacity:0}
+.off .tile{filter:grayscale(.85) brightness(.6)}
+.off .tile:after{content:"";position:absolute;left:-8%;top:50%;width:116%;height:6px;margin-top:-3px;background:var(--danger);transform:rotate(-38deg);border-radius:3px;box-shadow:0 0 10px rgba(0,0,0,.6)}
+
+/* layout: icons */
+.icons{display:flex;gap:84px;align-items:flex-start;justify-content:center}
+.icon-item{display:flex;flex-direction:column;align-items:center;width:240px;text-align:center}
+body[data-theme=esports] .icon-item, body[data-theme=codex] .icon-item{align-items:flex-start;text-align:left;width:auto;min-width:200px}
+.icon-item .label{margin-top:22px;font:var(--label-font);text-transform:var(--label-case);letter-spacing:.04em;color:var(--label-color)}
+.icon-item .cap{margin-top:8px;font:400 22px/1.35 var(--ui-font);color:var(--muted)}
+.off .label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--danger);text-decoration-thickness:3px}
+
+/* layout: cards */
+.cards{display:flex;flex-direction:column;gap:20px;width:1120px}
+.card{display:flex;align-items:center;gap:26px;padding:16px 28px 16px 16px;background:var(--card-bg);border:1px solid var(--card-line);border-left:4px solid var(--tone);border-radius:var(--card-radius);box-shadow:var(--card-shadow)}
+body[data-theme=esports] .card{border-left-width:6px}
+.card .txt{flex:1}
+.card .name{font:var(--card-name-font);color:var(--card-text)}
+.card .desc{margin-top:4px;font:400 24px var(--ui-font);color:var(--tone)}
+.card .badge{font:700 17px var(--ui-font);letter-spacing:.2em;text-transform:uppercase;color:var(--tone);border:1px solid currentColor;padding:7px 12px;border-radius:4px}
+.dim{opacity:.45 !important}
+
+/* layout: meter */
+.meter-wrap{display:flex;flex-direction:column;align-items:center;gap:56px}
+.meter{position:relative;width:1100px}
+.meter .bar{height:10px;border-radius:5px;background:linear-gradient(90deg,var(--nature),#e8c95a 50%,var(--danger));box-shadow:0 0 18px rgba(0,0,0,.35)}
+.meter .ticks{display:flex;justify-content:space-between;margin-top:20px;font:600 20px var(--ui-font);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.meter .mark{position:absolute;top:-11px;width:32px;height:32px;margin-left:-16px;transform:rotate(45deg);background:var(--mark-bg);border:3px solid var(--rule);box-shadow:0 0 22px rgba(255,230,170,.6)}
+.meter-wrap .cards{width:1000px}
+.meter-wrap .card .name{font-size:28px}
+.meter-wrap .card .desc{font-size:22px}
+
+/* layout: feature (one big item on the left, cards on the right: weapon, class, boss…) */
+.feature{display:flex;gap:80px;align-items:center}
+.fcol{display:flex;flex-direction:column;align-items:center;width:380px;text-align:center}
+.fcol .label{margin-top:26px;font:var(--label-font);font-size:42px;text-transform:var(--label-case);letter-spacing:.04em;color:var(--label-color)}
+.fcol .cap{margin-top:10px;font:600 20px var(--ui-font);letter-spacing:.3em;text-transform:uppercase;color:var(--fcap-color,var(--tone))}
+.feature .cards{width:960px}
+.feature .card .name{font-size:30px}
+.feature .card .desc{font-size:23px}
+
+/* feature + figure: tall portrait (character, enemy, NPC) appearing on its cue at the right */
+.feature.withfig{gap:56px}
+.feature.withfig .fcol{width:330px}
+.feature.withfig .cards{width:800px}
+.figcol{position:relative;width:290px;height:540px;flex:none;overflow:hidden;background:#000;border:var(--tile-bw) solid var(--tile-border);border-radius:var(--card-radius);box-shadow:0 20px 56px rgba(0,0,0,.45)}
+.figcol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--fig-pos,50% 20%)}
+.figcol .figtxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 16px;text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.85) 55%)}
+.figcol .figlabel{font:var(--label-font);font-size:30px;text-transform:var(--label-case);color:#f3ead6;letter-spacing:.04em}
+.figcol .figcap{margin-top:6px;font:600 16px var(--ui-font);letter-spacing:.24em;text-transform:uppercase;color:#d9c9a6}
+
+/* layout: media (image or video clip) */
+.mframe{position:absolute;left:50%;top:312px;width:1152px;height:648px;margin-left:-576px;overflow:hidden;background:#000;
+  border:var(--tile-bw) solid var(--tile-border);border-radius:var(--card-radius);box-shadow:0 24px 70px rgba(0,0,0,.5)}
+.mframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:var(--fit,cover);transform-origin:50% 45%}
+.L-media.notitle .mframe{top:135px;width:1440px;height:810px;margin-left:-720px}
+.L-media.full .mframe{left:0;top:0;width:1920px;height:1080px;margin-left:0;border:0;border-radius:0;box-shadow:none}
+.L-media.full .head{display:none}
+.L-media.full .section{z-index:2;color:#fff;text-shadow:0 2px 8px #000}
+.mcap{position:absolute;left:0;right:0;bottom:62px;text-align:center;font:500 24px var(--ui-font);color:var(--muted)}
+.L-media.full .mcap{bottom:56px;color:#fff;text-shadow:0 2px 10px #000;font-size:30px}
+
+/* layout: stats */
+.stats{display:flex;gap:160px}
+.stat{text-align:center}
+.stat .num{font:700 150px/1 var(--title-font);color:var(--tone);text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.stat .lbl{margin-top:14px;font:600 20px var(--ui-font);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bgart"></div>
+  <svg id="grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <svg id="deco" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width=".5">
+    <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="88"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="24"/>
+    <polygon points="100,12 176,144 24,144"/><polygon points="100,188 24,56 176,56"/>
+    <path d="M100 4v192M4 100h192"/>
+  </svg>
+  <div class="series" id="series"></div>
+  <div id="badge"></div>
+</div>
+<script>
+const SPEC = /*SPEC*/null;
+const FPS = 30, IN = 0.5, GLOW = 0.9, OUT = 0.35, MOVE = 0.7;
+document.body.dataset.theme = SPEC.theme || 'grimoire';
+for (const [k, v] of Object.entries(SPEC.vars || {})) document.body.style.setProperty(k, v);  // per-video tweaks, e.g. {"--accent": "#ff4655"}
+if (SPEC.bgImage) document.getElementById('bgart').style.backgroundImage = `url("${SPEC.bgImage}")`;  // real game art behind everything (dimmed, blurred)
+const stage = document.getElementById('stage');
+document.getElementById('series').textContent = SPEC.series || '';
+const tone = t => `var(--${t||'neutral'})`;
+const clamp = x => Math.max(0, Math.min(1, x));
+const ease = p => 1 - Math.pow(1 - p, 3);
+const easeIO = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2;
+const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+function tile(it, size) {
+  const inner = it.svg ? `<svg viewBox="0 0 512 512">${it.svg}</svg>` : it.img ? `<img src="${it.img}">` : '';
+  return `<div class="tile${it.img ? ' img' : ''}" style="--tone:${tone(it.tone)};--s:${size}px">${inner}<div class="glow"></div></div>`;
+}
+
+const anims = [];   // {el, t, kind}
+const windows = []; // [start, end] seconds where something moves
+function anim(el, t, kind = 'rise', dur = IN) { anims.push({el, t, kind}); windows.push([t, t + dur]); }
+
+const slides = SPEC.slides.map((s, i) => {
+  const root = document.createElement('div');
+  root.className = 'slide L-' + (s.layout || 'hero');
+  root.style.setProperty('--tone', s.tone ? tone(s.tone) : 'var(--accent)');
+  const h0 = s.t + (i ? OUT * .85 : 0);
+  let html = '';
+  if (s.section) { const [n, ...l] = s.section.split(' '); html += `<div class="section"><b>${esc(n)}</b>${esc(l.join(' '))}</div>`; }
+  if (s.layout !== 'media' || s.title) html += `<div class="head">${s.kicker ? `<div class="kicker">${esc(s.kicker)}</div><br>` : ''}<div class="title">${esc(s.title)}</div><div class="divider"><i></i><s></s><i></i></div>${s.subtitle ? `<div class="subtitle">${esc(s.subtitle)}</div>` : ''}</div>`;
+  const items = s.items || [];
+  if (s.layout === 'icons') {
+    const size = items.length <= 3 ? 156 : items.length === 4 ? 140 : 124;
+    html += `<div class="body"><div class="icons" style="gap:${items.length > 4 ? 64 : 96}px">` + items.map(it =>
+      `<div class="icon-item item${it.off ? ' off' : ''}">${tile(it, size)}<div class="label">${esc(it.label)}</div>${it.caption ? `<div class="cap">${esc(it.caption)}</div>` : ''}</div>`).join('') + `</div></div>`;
+  } else if (s.layout === 'feature') {
+    const f = s.feature || {};
+    const fig = s.figure ? `<div class="figcol"><img src="${s.figure.img}"><div class="figtxt"><div class="figlabel">${esc(s.figure.label)}</div>${s.figure.caption ? `<div class="figcap">${esc(s.figure.caption)}</div>` : ''}</div></div>` : '';
+    html += `<div class="body"><div class="feature${fig ? ' withfig' : ''}"><div class="fcol fitem" style="--tone:${tone(f.tone)}">${tile(f, fig ? 270 : 300)}<div class="label">${esc(f.label)}</div>${f.caption ? `<div class="cap">${esc(f.caption)}</div>` : ''}</div><div class="cards">` + items.map(it =>
+      `<div class="card item" style="--tone:${tone(it.tone)}">${it.icon ? tile(it, 72) : ''}<div class="txt"><div class="name">${esc(it.label)}</div>${it.caption ? `<div class="desc">${esc(it.caption)}</div>` : ''}</div>${it.badge ? `<div class="badge">${esc(it.badge)}</div>` : ''}</div>`).join('') + `</div>${fig}</div></div>`;
+  } else if (s.layout === 'cards' || s.layout === 'meter') {
+    const cards = `<div class="cards">` + items.map(it =>
+      `<div class="card item" style="--tone:${tone(it.tone)}">${it.icon ? tile(it, s.layout === 'meter' ? 64 : 72) : ''}<div class="txt"><div class="name">${esc(it.label)}</div>${it.caption ? `<div class="desc">${esc(it.caption)}</div>` : ''}</div>${it.badge ? `<div class="badge">${esc(it.badge)}</div>` : ''}</div>`).join('') + `</div>`;
+    if (s.layout === 'meter') {
+      const ticks = (s.ticks || ['niski', 'średni', 'wysoki']).map(x => `<span>${esc(x)}</span>`).join('');
+      html += `<div class="body"><div class="meter-wrap"><div class="meter"><div class="bar"></div><div class="mark"></div><div class="ticks">${ticks}</div></div>${cards}</div></div>`;
+    } else html += `<div class="body">${cards}</div>`;
+  } else if (s.layout === 'media') {
+    const m = s.media || {};
+    if (s.fit === 'full') root.classList.add('full'); else if (!s.title) root.classList.add('notitle');
+    html += `<div class="mframe item" style="--fit:${s.contain ? 'contain' : 'cover'}"><img src="${m.kind === 'video' ? m.dir + '/00001.jpg' : m.src}"></div>`;
+    if (s.caption) html += `<div class="mcap">${esc(s.caption)}</div>`;
+  } else if (s.layout === 'stats') {
+    html += `<div class="body"><div class="stats">` + items.map(it => `<div class="stat item" style="--tone:${tone(it.tone)}"><div class="num">${esc(it.label)}</div><div class="lbl">${esc(it.caption)}</div></div>`).join('') + `</div></div>`;
+  }
+  if (s.note) html += `<div class="note">${esc(s.note.text)}</div>`;
+  root.innerHTML = html;
+  stage.appendChild(root);
+
+  // timeline
+  const q = sel => root.querySelector(sel);
+  if (q('.section')) anim(q('.section'), h0, 'fade');
+  if (q('.kicker')) anim(q('.kicker'), h0, 'fade');
+  if (q('.title')) { anim(q('.title'), h0 + .08, 'rise'); anim(q('.divider'), h0 + .2, 'grow', .7); }
+  if (q('.subtitle')) anim(q('.subtitle'), h0 + .3, 'fade');
+  const els = [...root.querySelectorAll('.item')];
+  items.forEach((it, k) => {
+    const t = Math.max(it.t ?? (h0 + .45 + k * .18), h0 + .3);
+    it.t = t;
+    anim(els[k], t, 'rise', GLOW);
+  });
+  if (s.note) anim(q('.note'), Math.max(s.note.t ?? h0 + .9, h0 + .3), 'fade');
+  if (q('.meter')) anim(q('.meter'), h0 + .35, 'fade');
+  if (q('.fitem')) anim(q('.fitem'), Math.max(s.feature?.t ?? h0 + .3, h0 + .3), 'rise', GLOW);
+  if (q('.figcol')) anim(q('.figcol'), Math.max(s.figure?.t ?? h0 + .6, h0 + .3), 'rise');
+  if (s.layout === 'meter') items.forEach(it => windows.push([it.t, it.t + MOVE]));
+  let mediaEl = null;
+  if (s.layout === 'media') {
+    mediaEl = q('.mframe');
+    s.mt = Math.max(s.mt ?? h0 + .05, h0);          // media start (video plays from here)
+    anim(mediaEl, s.mt, 'fade');
+    if (q('.mcap')) anim(q('.mcap'), s.mt + .3, 'fade');
+  }
+  return {s, root, els, h0, mediaEl, img: mediaEl && mediaEl.querySelector('img')};
+});
+
+slides.forEach((sl, i) => {
+  const next = slides[i + 1];
+  sl.end = next ? next.s.t : (SPEC.duration ?? Infinity);
+  if (next) windows.push([next.s.t, next.s.t + OUT]);
+  const m = sl.s.media;
+  if (m && m.kind === 'video') windows.push([sl.s.mt, Math.min(sl.s.mt + m.count / m.fps, sl.end + OUT)]);  // every frame changes
+  if (m && sl.s.kenburns) windows.push([sl.s.t, sl.end + OUT]);
+});
+
+function seek(t) {
+  slides.forEach((sl, i) => {
+    let op = 0;
+    if (t >= sl.s.t && t < sl.end + OUT) op = t < sl.end ? 1 : 1 - clamp((t - sl.end) / OUT);
+    if (i === 0 && t < sl.s.t) op = 1;
+    sl.root.style.display = op > 0 ? '' : 'none';
+    sl.root.style.opacity = op;
+  });
+  for (const a of anims) {
+    const p = clamp((t - a.t) / IN), e = ease(p), st = a.el.style;
+    if (a.kind === 'grow') {
+      const g = easeIO(clamp((t - a.t) / .7));
+      a.el.querySelectorAll('i').forEach(i => i.style.transform = `scaleX(${g})`);
+      a.el.querySelector('s').style.transform = `rotate(45deg) scale(${ease(clamp((t - a.t) / .35))})`;
+      continue;
+    }
+    st.opacity = e;
+    if (a.kind === 'rise') st.transform = `translateY(${(1 - e) * 22}px)`;
+    const glow = a.el.querySelector && a.el.querySelector('.glow');
+    if (glow) {
+      const g = t >= a.t && t <= a.t + GLOW ? Math.sin(Math.PI * clamp((t - a.t) / GLOW)) : 0;
+      glow.style.opacity = g;
+      glow.style.boxShadow = `0 0 ${10 + 30 * g}px ${4 * g}px var(--tone)`;
+    }
+  }
+  // media: video frame for this instant, optional slow push-in
+  slides.forEach(sl => {
+    const m = sl.s.media;
+    if (!m || sl.root.style.display === 'none') return;
+    if (m.kind === 'video') {
+      const k = Math.max(0, Math.min(m.count - 1, Math.floor((t - sl.s.mt) * m.fps + 1e-6)));
+      const src = m.dir + '/' + String(k + 1).padStart(5, '0') + '.jpg';
+      if (sl.img.getAttribute('src') !== src) sl.img.setAttribute('src', src);
+    }
+    if (sl.s.kenburns) {
+      const p = clamp((t - sl.s.t) / Math.max(1, Math.min(sl.end, sl.s.t + 30) - sl.s.t));
+      sl.img.style.transform = `scale(${1 + .07 * p})`;
+    }
+  });
+  // meter marker + active card
+  slides.forEach(sl => {
+    if (sl.s.layout !== 'meter') return;
+    const its = sl.s.items, mark = sl.root.querySelector('.mark');
+    let k = -1; its.forEach((it, j) => { if (t >= it.t) k = j; });
+    if (k < 0) { mark.style.opacity = 0; return; }
+    const prev = k > 0 ? its[k - 1].value : its[0].value;
+    const v = prev + (its[k].value - prev) * easeIO(clamp((t - its[k].t) / MOVE));
+    mark.style.opacity = k === 0 ? ease(clamp((t - its[0].t) / IN)) : 1;
+    mark.style.left = (v * 100) + '%';
+    sl.els.forEach((el, j) => el.classList.toggle('dim', j < k));
+  });
+}
+window.fit = () => {
+  slides.forEach(sl => sl.root.style.display = '');
+  document.querySelectorAll('.title').forEach(el => {
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > 1680 && fs > 40) { fs -= 2; el.style.fontSize = fs + 'px'; }
+  });
+  seek(0);
+};
+window.badge = text => { const b = document.getElementById('badge'); b.textContent = text; b.style.display = text ? 'block' : 'none'; };
+// deterministic description of what is on screen at t (pixels are not stable across compositor history)
+window.stateKey = t => {
+  seek(t);
+  return slides.filter(sl => sl.root.style.display !== 'none').map(sl =>
+    JSON.stringify(sl.s) + sl.root.style.opacity + [...sl.root.querySelectorAll('[style],[class],img')].map(e => e.className + e.style.cssText + (e.getAttribute('src') || '')).join('|')).join('#');
+};
+window.seek = seek;
+window.timeline = () => windows.map(([a, b]) => [Math.max(0, a), b]);
+seek(0);
+</script>
+</body>
+</html>

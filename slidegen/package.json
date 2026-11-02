@@ -1,0 +1,17 @@
+{
+  "name": "slidegen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Voice-over + script -> animated, game-styled slide video synced word-by-word",
+  "dependencies": {
+    "@fontsource/cinzel": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/marcellus-sc": "^5.3.0",
+    "@fontsource/oswald": "^5.3.0",
+    "@fontsource/pirata-one": "^5.3.0",
+    "@fontsource/rajdhani": "^5.3.0",
+    "@iconify-json/game-icons": "^1.2.4"
+  }
+}
